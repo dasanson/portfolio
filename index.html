@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daniel Sanson</title>
+  <meta name="description" content="Portfolio of Daniel Sanson, Data Analyst — projects in Tableau, SQL, and analytics." />
+  <style>
+    :root {
+      --bg: #111111;
+      --text: #f1f1f1;
+      --muted: #b0b0b0;
+      --accent: #ffffff;
+      --highlight: #00ff99;
+      --card: #1a1a1a;
+      --border: #2b2b2b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .wrap { display: flex; }
+
+    aside {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 260px;
+      border-right: 1px solid var(--border);
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--bg);
+      overflow-y: auto;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .brand img.profile-pic {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .brand span {
+      display: block;
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+
+    nav a {
+      display: block;
+      padding: 10px 12px;
+      margin: 4px 0;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid transparent;
+      transition: color 0.3s, border 0.3s;
+    }
+
+    nav a:hover { color: var(--highlight); border-color: var(--highlight); }
+    nav a.active { border-color: var(--accent); background: transparent; color: var(--accent); }
+
+    .contact-info { font-size: 0.95rem; color: var(--muted); margin-top: 20px; }
+    .contact-info strong { color: var(--text); font-size: 1.15rem; font-weight: 700; }
+    .contact-info a { color: var(--muted); text-decoration: none; }
+    .contact-info a:hover { color: var(--highlight); }
+
+    main {
+      margin-left: 320px;
+      padding: 80px 60px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+    }
+
+    h1, h2 { line-height: 1.2; margin: 0 0 12px; }
+    h1 { font-size: clamp(1.8rem, 1rem + 2vw, 2.6rem); }
+    h2 { font-size: clamp(1.3rem, 1rem + 1.2vw, 1.8rem); }
+    p.lead { color: var(--muted); max-width: 80ch; }
+
+    .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    .card { border: 1px solid var(--border); background: var(--card); border-radius: 12px; padding: 16px; display: grid; gap: 10px; }
+    .card h3 { margin: 0; font-size: 1.05rem; }
+    .card .meta { font-size: 0.9rem; color: var(--muted); }
+
+    .dashboard-preview {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .dashboard-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--accent); text-decoration: none; color: var(--text); transition: color 0.3s, border-color 0.3s; }
+    .btn:hover { color: var(--highlight); border-color: var(--highlight); }
+
+    .skills-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .skill { background: var(--card); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; color: var(--text); }
+
+    @media (max-width: 900px) {
+      .wrap { flex-direction: column; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+      main { margin-left: 0; padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <aside>
+      <div>
+        <div class="brand">
+          <img src="assets/images/profile_pic.jpg" alt="Daniel Sanson" class="profile-pic" />
+          <div>
+            Daniel Sanson
+            <span>Data Analyst</span>
+          </div>
+        </div>
+        <nav>
+          <a class="navlink" href="#intro">01 · Introduction</a>
+          <a class="navlink" href="#projects">02 · Projects</a>
+          <a class="navlink" href="#skills">03 · Skills</a>
+        </nav>
+      </div>
+      <div class="contact-info">
+        <strong>Contact</strong><br />
+        <a href="https://www.linkedin.com/in/dasanson/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </aside>
+
+    <main>
+      <section id="intro">
+        <h1>Hi, I’m Daniel</h1>
+        <p class="lead">Data nerd with a strong passion for shaping complex datasets into clear visual stories and reports that allow teams to make informed decisions. I focus on creating results that actually enhance understanding and drive operational efficiency through data.</p>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+          <article class="card">
+            <h3>NYC Airbnb Dashboard</h3>
+            <p class="meta">ETL · Python · Tableau · Market behaviour · Geographic analysis</p>
+            <div class="dashboard-preview">
+              <img src="assets/images/ny_ab_tableau_db.png" alt="NYC Airbnb Dashboard Preview" />
+            </div>
+            <p>Using Python to include ZIP codes for an open Airbnb NYC dataset I was able to create this dashboard to explore neighborhood trends, pricing and occupancy patterns across the city, with interactive filters.</p>
+            <p><a class="btn primary" href="https://public.tableau.com/views/NYCAirbnbDashboard_17605909734360/NYDB?:showVizHome=no&amp;:embed=true&amp;:device=desktop" target="_blank" rel="noopener">Open in Tableau</a></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-list">
+          <span class="skill">SQL</span>
+          <span class="skill">MySQL</span>
+          <span class="skill">PostgreSQL</span>
+          <span class="skill">Python (numpy, pandas, geopandas, scikit-learn, matplotlib)</span>
+          <span class="skill">JavaScript (D3.js)</span>
+          <span class="skill">R</span>
+          <span class="skill">Knime</span>
+          <span class="skill">Orange Data Mining</span>
+          <span class="skill">RapidMiner</span>
+          <span class="skill">Excel</span>
+          <span class="skill">Power Query</span>
+          <span class="skill">Google Sheets</span>
+          <span class="skill">Access</span>
+          <span class="skill">Tableau</span>
+          <span class="skill">Power BI</span>
+          <span class="skill">Looker</span>
+          <span class="skill">Azure Data Studio</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">Statistics</span>
+          <span class="skill">ETL</span>
+          <span class="skill">Exploratory Data Analysis</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const links = Array.from(document.querySelectorAll('.navlink'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+
+    window.addEventListener('load', () => {
+      links.forEach(l => l.classList.remove('active'));
+      document.querySelector("a[href='#intro']").classList.add('active');
+      setActiveByViewport();
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    function setActiveByViewport() {
+      const doc = document.documentElement;
+      const atBottom = Math.ceil(window.scrollY + window.innerHeight) >= doc.scrollHeight - 2;
+
+      let current = sections[0];
+      if (atBottom) {
+        current = sections[sections.length - 1];
+      } else {
+        let bestDist = Infinity;
+        const anchorOffset = 120;
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          const dist = Math.abs(rect.top - anchorOffset);
+          if (dist < bestDist) { bestDist = dist; current = sec; }
+        });
+      }
+
+      links.forEach(l => l.classList.remove('active'));
+      const activeLink = document.querySelector(`a[href='#${current.id}']`);
+      activeLink?.classList.add('active');
+    }
+
+    window.addEventListener('scroll', setActiveByViewport, { passive: true });
+    window.addEventListener('resize', setActiveByViewport);
+  </script>
+</body>
+</html>
