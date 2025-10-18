@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Daniel Sanson</title>
+  <title>Daniel Sanson • Data Analyst Portfolio</title>
   <meta name="description" content="Portfolio of Daniel Sanson, Data Analyst — projects in Tableau, SQL, and analytics." />
   <style>
     :root {
@@ -94,13 +94,15 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 100px;
+      gap: 80px;
     }
+
+    section { scroll-margin-top: 100px; }
 
     h1, h2 { line-height: 1.2; margin: 0 0 12px; }
     h1 { font-size: clamp(1.8rem, 1rem + 2vw, 2.6rem); }
     h2 { font-size: clamp(1.3rem, 1rem + 1.2vw, 1.8rem); }
-    p.lead { color: var(--muted); max-width: 80ch; }
+    p.lead { color: var(--muted); max-width: 80ch; margin: 0; }
 
     .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
     .card { border: 1px solid var(--border); background: var(--card); border-radius: 12px; padding: 16px; display: grid; gap: 10px; }
@@ -124,6 +126,10 @@
     .btn:hover { color: var(--highlight); border-color: var(--highlight); }
 
     .skills-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .skill { background: var(--card); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; color: var(--text); }
+
+    p { margin: 0 0 12px; }
+    section > *:last-child { margin-bottom: 0; }
     .skill { background: var(--card); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; color: var(--text); }
 
     @media (max-width: 900px) {
@@ -158,7 +164,7 @@
 
     <main>
       <section id="intro">
-        <h1>Hi, I’m Daniel</h1>
+        <h1>Hi, I’m Daniel.</h1>
         <p class="lead">A data nerd with a strong passion for transforming complex datasets into clear visual stories and reports that allow teams to make informed decisions. I focus on creating results that actually enhance understanding and drive operational efficiency through data.</p>
       </section>
 
@@ -171,7 +177,7 @@
             <div class="dashboard-preview">
               <img src="assets/images/ny_ab_tableau_db.png" alt="NYC Airbnb Dashboard Preview" />
             </div>
-            <p>Using Python to append ZIP codes for an open Airbnb NYC dataset, I created this dashboard to explore neighborhood trends, pricing and occupancy patterns across the city, with interactive filters.</p>
+            <p>This dashboard explores neighborhood trends, pricing patterns, and occupancy signals across NYC listings, with interactive filters for borough and room type.</p>
             <p><a class="btn primary" href="https://public.tableau.com/views/NYCAirbnbDashboard_17605909734360/NYDB?:showVizHome=no&amp;:embed=true&amp;:device=desktop" target="_blank" rel="noopener">Open in Tableau</a></p>
           </article>
         </div>
@@ -211,6 +217,8 @@
     const links = Array.from(document.querySelectorAll('.navlink'));
     const sections = links.map(a => document.querySelector(a.getAttribute('href')));
 
+    let suppressSpyUntil = 0; 
+
     window.addEventListener('load', () => {
       links.forEach(l => l.classList.remove('active'));
       document.querySelector("a[href='#intro']").classList.add('active');
@@ -221,20 +229,28 @@
       link.addEventListener('click', e => {
         e.preventDefault();
         const target = document.querySelector(link.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
+        // Preselect clicked link
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        // Suppress scroll spy updates briefly to avoid highlight flicker
+        suppressSpyUntil = Date.now() + 900;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => { suppressSpyUntil = 0; setActiveByViewport(); }, 950);
       });
     });
 
     function setActiveByViewport() {
+      if (Date.now() < suppressSpyUntil) return; 
+
       const doc = document.documentElement;
-      const atBottom = Math.ceil(window.scrollY + window.innerHeight) >= doc.scrollHeight - 2;
+      const atBottom = Math.ceil(window.scrollY + window.innerHeight) >= doc.scrollHeight - 5;
 
       let current = sections[0];
       if (atBottom) {
         current = sections[sections.length - 1];
       } else {
         let bestDist = Infinity;
-        const anchorOffset = 120;
+        const anchorOffset = 160; 
         sections.forEach(sec => {
           const rect = sec.getBoundingClientRect();
           const dist = Math.abs(rect.top - anchorOffset);
