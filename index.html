@@ -130,7 +130,6 @@
 
     p { margin: 0 0 12px; }
     section > *:last-child { margin-bottom: 0; }
-    .skill { background: var(--card); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; color: var(--text); }
 
     @media (max-width: 900px) {
       .wrap { flex-direction: column; }
@@ -171,14 +170,25 @@
       <section id="projects">
         <h2>Projects</h2>
         <div class="projects">
+          <!-- Project 1 -->
           <article class="card">
             <h3>NYC Airbnb Dashboard</h3>
             <p class="meta">ETL · Python · Tableau · Market behaviour · Geographic analysis</p>
             <div class="dashboard-preview">
               <img src="assets/images/ny_ab_tableau_db.png" alt="NYC Airbnb Dashboard Preview" />
             </div>
-            <p>Using Python to append ZIP codes to my dataset, I built this dashboard that explores neighborhood trends, pricing patterns, and occupancy signals across NYC listings, with interactive filters.</p>
+            <p>Using Python to append ZIP codes to my dataset, I built this dashboard that explores neighborhood trends, pricing patterns, and occupancy rate (as a calculated field) across NYC listings, with interactive filters.</p>
             <p><a class="btn primary" href="https://public.tableau.com/views/NYCAirbnbDashboard_17605909734360/NYDB?:showVizHome=no&amp;:embed=true&amp;:device=desktop" target="_blank" rel="noopener">Open in Tableau</a></p>
+          </article>
+
+          <article class="card">
+            <h3>S&amp;P 500 Dashboard</h3>
+            <p class="meta">Google Sheets · Automation · Looker Studio · Financial data · Stock market</p>
+            <div class="dashboard-preview">
+              <img src="assets/images/sp_500_looker_db.png" alt="S&amp;P 500 Looker Studio Dashboard Preview" />
+            </div>
+            <p>This Looker Studio dashboard analyzes relevant KPIs across S&amp;P 500 companies. I made a fully automated Google spreadsheet with live results so visitors are able to get the latest results with a couple of clicks.</p>
+            <p><a class="btn primary" href="https://lookerstudio.google.com/reporting/7ae5a833-7a69-4d1e-a921-dbf5c6d34ef4" target="_blank" rel="noopener">Open in Looker Studio</a></p>
           </article>
         </div>
       </section>
@@ -201,7 +211,7 @@
           <span class="skill">Access</span>
           <span class="skill">Tableau</span>
           <span class="skill">Power BI</span>
-          <span class="skill">Looker</span>
+          <span class="skill">Looker Studio</span>
           <span class="skill">Azure Data Studio</span>
           <span class="skill">Git</span>
           <span class="skill">GitHub</span>
@@ -229,10 +239,8 @@
       link.addEventListener('click', e => {
         e.preventDefault();
         const target = document.querySelector(link.getAttribute('href'));
-        // Preselect clicked link
         links.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-        // Suppress scroll spy updates briefly to avoid highlight flicker
         suppressSpyUntil = Date.now() + 900;
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setTimeout(() => { suppressSpyUntil = 0; setActiveByViewport(); }, 950);
