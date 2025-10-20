@@ -106,8 +106,10 @@
 
     .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
     .card { border: 1px solid var(--border); background: var(--card); border-radius: 12px; padding: 16px; display: grid; gap: 10px; }
-    .card h3 { margin: 0; font-size: 1.05rem; }
-    .card .meta { font-size: 0.9rem; color: var(--muted); }
+    .card h3 { margin: 0 0 8px; }
+    .card .meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 12px; display: block; }
+    .card .dashboard-preview { margin-bottom: 12px; }
+    .card p { margin: 0 0 10px; }
 
     .dashboard-preview {
       width: 100%;
@@ -177,17 +179,18 @@
             <div class="dashboard-preview">
               <img src="assets/images/ny_ab_tableau_db.png" alt="NYC Airbnb Dashboard Preview" />
             </div>
-            <p>Using Python to append ZIP codes to my dataset, I built this dashboard that explores neighborhood trends, pricing patterns, and occupancy rate (as a calculated field) across NYC listings, with interactive filters.</p>
+            <p>Using Python to append ZIP codes to my dataset, I built this dashboard that explores neighborhood trends, pricing patterns, and occupancy rate (made as a calculated field) across NYC listings, with interactive filters.</p>
             <p><a class="btn primary" href="https://public.tableau.com/views/NYCAirbnbDashboard_17605909734360/NYDB?:showVizHome=no&amp;:embed=true&amp;:device=desktop" target="_blank" rel="noopener">Open in Tableau</a></p>
           </article>
 
+          <!-- Project 2 -->
           <article class="card">
             <h3>S&amp;P 500 Dashboard</h3>
             <p class="meta">Google Sheets · Automation · Looker Studio · Financial data · Stock market</p>
             <div class="dashboard-preview">
               <img src="assets/images/sp_500_looker_db.png" alt="S&amp;P 500 Looker Studio Dashboard Preview" />
             </div>
-            <p>This Looker Studio dashboard analyzes relevant KPIs across S&amp;P 500 companies. I made a fully automated Google spreadsheet with live results so visitors are able to get the latest results with a couple of clicks.</p>
+            <p>This interactive Looker Studio dashboard analyzes relevant KPIs across S&amp;P 500 companies. The data source is a fully automated sheet with live data so visitors can get the latest results with just a couple of clicks.</p>
             <p><a class="btn primary" href="https://lookerstudio.google.com/reporting/7ae5a833-7a69-4d1e-a921-dbf5c6d34ef4" target="_blank" rel="noopener">Open in Looker Studio</a></p>
           </article>
         </div>
@@ -199,6 +202,7 @@
           <span class="skill">SQL</span>
           <span class="skill">MySQL</span>
           <span class="skill">PostgreSQL</span>
+          <span class="skill">SQLite</span>
           <span class="skill">Python (pandas, numpy, geopandas, scikit-learn, matplotlib)</span>
           <span class="skill">JavaScript (D3.js)</span>
           <span class="skill">R</span>
